@@ -18,6 +18,7 @@
 			flex-wrap: wrap;
 			justify-content: center;
 			margin-top: 50px;
+			text-color: #f9f9f9;
 		}
 		#countdown div {
 			margin: 10px;
@@ -39,7 +40,7 @@
 		#countdown div small {
 			font-size: 16px;
 			color: #f9f9f9;
-			margin-top: 70px;
+			
 		}
 	</style>
 </head>
@@ -69,7 +70,7 @@
 	<script type="text/javascript">
 		var countdown = setInterval(function() {
 			var now = new Date();
-			var eventDate = new Date("April 18, 2023 00:00:00");
+			var eventDate = new Date("November 5, 2023 00:00:00");
 			var currentTime = now.getTime();
 			var eventTime = eventDate.getTime();
 			var remTime = eventTime - currentTime;
