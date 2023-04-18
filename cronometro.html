@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contagem Regressiva</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+
+    .countdown {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      margin: 50px auto;
+      max-width: 800px;
+    }
+
+    .countdown-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+      color: #ffffff;
+      font-size: 48px;
+      font-weight: bold;
+      background-color: #333333;
+      border-radius: 5px;
+      padding: 20px 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .countdown-item span {
+      font-size: 24px;
+      font-weight: normal;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="countdown">
+    <div class="countdown-item" id="days">
+      00
+      <span>dias</span>
+    </div>
+    <div class="countdown-item" id="hours">
+      00
+      <span>horas</span>
+    </div>
+    <div class="countdown-item" id="minutes">
+      00
+      <span>minutos</span>
+    </div>
+    <div class="countdown-item" id="seconds">
+      00
+      <span>segundos</span>
+    </div>
+  </div>
+
+  <script>
+    // definir a data final
+    var dataFinal = new Date("November 5, 2023 00:00:00").getTime();
+
+    // definir a função que atualiza a contagem regressiva
+    function atualizarContagemRegressiva() {
+      // pegar a data e hora atual
+      var agora = new Date().getTime();
+
+      // calcular a diferença em segundos entre a data final e a data atual
+      var diferenca = (dataFinal - agora) / 1000;
+
+      // calcular o número de dias, horas, minutos e segundos restantes
+      var dias = Math.floor(diferenca / (24 * 60 * 60));
+      var horas = Math.floor((diferenca % (24 * 60 * 60)) / (60 * 60));
+      var minutos = Math.floor((diferenca % (60 * 60)) / 60);
+      var segundos = Math.floor(diferenca % 60);
+
+      // atualizar a contagem regressiva na página
+      document.getElementById("days").innerHTML = dias.toLocaleString("en-US", { minimumIntegerDigits: 2 });
+      document.getElementById("hours").innerHTML = horas.toLocaleString("en-US", { minimumIntegerDigits: 2 });
+      document.getElementById("minutes").innerHTML = minutos.toLocaleString("en-US",
