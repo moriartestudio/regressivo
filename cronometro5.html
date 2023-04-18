@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contagem Regressiva</title>
+	<style type="text/css">
+		body {
+			background-color: #f9f9f9;
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 50px;
+		}
+		#countdown {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			margin-top: 50px;
+		}
+		#countdown div {
+			margin: 10px;
+			padding: 10px;
+			background-color: #fff;
+			box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+			border-radius: 5px;
+			text-align: center;
+			width: 100px;
+			height: 100px;
+		}
+		#countdown div span {
+			display: block;
+			font-size: 40px;
+			font-weight: bold;
+			color: #333;
+		}
+		#countdown div small {
+			font-size: 16px;
+			color: #333;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>Contagem Regressiva para 5 de Novembro de 2023</h1>
+
+	<div id="countdown">
+		<div>
+			<span id="days">0</span>
+			<small>Dias</small>
+		</div>
+		<div>
+			<span id="hours">0</span>
+			<small>Horas</small>
+		</div>
+		<div>
+			<span id="minutes">0</span>
+			<small>Minutos</small>
+		</div>
+		<div>
+			<span id="seconds">0</span>
+			<small>Segundos</small>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var countdown = setInterval(function() {
+			var now = new Date();
+			var eventDate = new Date("November 5, 2023 00:00:00");
+			var currentTime = now.getTime();
+			var eventTime = eventDate.getTime();
+			var remTime = eventTime - currentTime;
+
+			var days = Math.floor(remTime / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((remTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((remTime % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((remTime % (1000 * 60)) / 1000);
+
+			document.getElementById("days").innerHTML = days;
+			document.getElementById("hours").innerHTML = hours;
+			document.getElementById("minutes").innerHTML = minutes;
+			document.getElementById("seconds").innerHTML = seconds;
+
+			if (remTime < 0) {
+				clearInterval(countdown);
+				document.getElementById("countdown").innerHTML = "<span>O evento já começou!</span>";
+			}
+		}, 1000);
+	</script>
+
+</body>
+</html>
