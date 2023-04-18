@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cronômetro Regressivo</title>
+	<style>
+		body {
+			background-color: #f8f8f8;
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			font-size: 50px;
+			color: #1a1a1a;
+			margin-top: 50px;
+			margin-bottom: 30px;
+		}
+		.countdown-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+		.countdown-item {
+			background-color: #ffffff;
+			border-radius: 10px;
+			box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+			color: #1a1a1a;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			font-size: 40px;
+			margin: 10px;
+			padding: 20px;
+			text-align: center;
+			width: 200px;
+		}
+		.countdown-item span {
+			font-size: 80px;
+			font-weight: bold;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Cronômetro Regressivo</h1>
+	<div class="countdown-container">
+		<div class="countdown-item">
+			<span id="dias">00</span>
+			<p>Dias</p>
+		</div>
+		<div class="countdown-item">
+			<span id="horas">00</span>
+			<p>Horas</p>
+		</div>
+		<div class="countdown-item">
+			<span id="minutos">00</span>
+			<p>Minutos</p>
+		</div>
+		<div class="countdown-item">
+			<span id="segundos">00</span>
+			<p>Segundos</p>
+		</div>
+	</div>
+	<script>
+		// Define a data final
+		var countDownDate = new Date("Nov 5, 2023 00:00:00").getTime();
+
+		// Atualiza o cronômetro a cada 1 segundo
+		var x = setInterval(function() {
+
+			// Pega a data e hora atual
+			var now = new Date().getTime();
+
+			// Calcula a diferença entre a data final e a atual
+			var distance = countDownDate - now;
+
+			// Calcula os dias, horas, minutos e segundos restantes
+			var dias = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var horas = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutos = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var segundos = Math.floor((distance % (1000 * 60)) / 1000);
+
+			// Mostra os valores no cronômetro
+			document.getElementById("dias").innerHTML = dias;
+			document.getElementById("horas").innerHTML = horas;
+			document.getElementById("minutos").innerHTML = minutos;
+			document.getElementById("segundos").innerHTML = segundos;
+
+			//
