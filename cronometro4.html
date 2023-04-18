@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cronômetro Regressivo</title>
+  <style>
+    body {
+      background-color: #333;
+      font-family: 'Open Sans', sans-serif;
+    }
+    
+    #tempo-restante {
+      font-size: 48px;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      margin-top: 100px;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+</head>
+<body>
+  <div id="tempo-restante"></div>
+  <script>
+    // definir o tempo inicial em segundos
+    var tempoInicial = 201 * 24 * 60 * 60 + 14 * 60 * 60 + 25 * 60 + 38;
+
+    // definir a função que atualiza o cronômetro
+    function atualizarCronometro() {
+      // converter segundos em dias, horas, minutos e segundos
+      var dias = Math.floor(tempoInicial / (24 * 60 * 60));
+      var segundosRestantes = tempoInicial % (24 * 60 * 60);
+      var horas = Math.floor(segundosRestantes / (60 * 60));
+      segundosRestantes = segundosRestantes % (60 * 60);
+      var minutos = Math.floor(segundosRestantes / 60);
+      var segundos = segundosRestantes % 60;
+
+      // exibir o tempo restante
+      document.getElementById("tempo-restante").innerHTML =
+        dias.toLocaleString("en-US", { minimumIntegerDigits: 1 }) +
+        " dias, " +
+        horas.toLocaleString("en-US", { minimumIntegerDigits: 2 }) +
+        ":" +
+        minutos.toLocaleString("en-US", { minimumIntegerDigits: 2 }) +
+        ":" +
+        segundos.toLocaleString("en-US", { minimumIntegerDigits: 2 });
+
+      // diminuir 1 segundo do tempo restante
+      tempoInicial--;
+
+      // aguardar 1 segundo antes de atualizar o tempo restante
+      setTimeout(atualizarCronometro, 1000);
+    }
+
+    // iniciar o cronômetro
+    atualizarCronometro();
+  </script>
+</body>
+</html>
